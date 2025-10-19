@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { BMIInputForm } from '@/components/bmi-input-form';
+import { BMIInputFormEnhanced } from '@/components/bmi-input-form-enhanced';
 import { BMIGauge } from '@/components/bmi-gauge';
 import { ReproductiveHealthImpactPanel } from '@/components/reproductive-health-impact';
 import { AIInsights } from '@/components/ai-insights';
@@ -93,29 +93,17 @@ export default function Home() {
   const healthData = bmiResult ? REPRODUCTIVE_HEALTH_DATA[bmiResult.category] : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
       {/* Header */}
-      <header className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-lg">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex items-center gap-4 mb-2">
-            <span className="text-5xl">🏥</span>
+      <header className="bg-gradient-to-r from-blue-900 via-blue-800 to-emerald-800 text-white shadow-xl border-b-4 border-emerald-600">
+        <div className="container mx-auto px-4 py-10">
+          <div className="flex items-center gap-4">
+            <div className="bg-white bg-opacity-10 p-4 rounded-2xl backdrop-blur-sm">
+              <span className="text-5xl">🏥</span>
+            </div>
             <div>
-              <h1 className="text-4xl font-extrabold">BMI & Reproductive Health Analyzer</h1>
-              <p className="text-teal-100 text-lg mt-1">Evidence-Based Health Education for Young Women</p>
-            </div>
-          </div>
-          <div className="mt-4 flex flex-wrap gap-4 text-sm">
-            <div className="flex items-center gap-2 bg-white bg-opacity-20 px-4 py-2 rounded-full">
-              <span>🌍</span>
-              <span>WHO-Based Classifications</span>
-            </div>
-            <div className="flex items-center gap-2 bg-white bg-opacity-20 px-4 py-2 rounded-full">
-              <span>💡</span>
-              <span>Personalized Health Insights</span>
-            </div>
-            <div className="flex items-center gap-2 bg-white bg-opacity-20 px-4 py-2 rounded-full">
-              <span>📚</span>
-              <span>Research-Backed Evidence</span>
+              <h1 className="text-4xl font-bold tracking-tight">BMI & Reproductive Health Analyzer</h1>
+              <p className="text-blue-100 text-lg mt-2 font-light">Evidence-Based Health Education for Young Women</p>
             </div>
           </div>
         </div>
@@ -125,7 +113,7 @@ export default function Home() {
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Input Form */}
-          <BMIInputForm onCalculate={handleCalculate} isLoading={isLoadingAI && !showResults} />
+          <BMIInputFormEnhanced onCalculate={handleCalculate} isLoading={isLoadingAI && !showResults} />
 
           {/* Calculation History */}
           <CalculationHistory onSelectEntry={handleSelectHistoryEntry} />
@@ -146,32 +134,40 @@ export default function Home() {
 
           {/* Educational Footer */}
           {!showResults && (
-            <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-teal-100">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <span className="text-3xl">📖</span>
-                About This Tool
-              </h2>
-              <div className="space-y-4 text-gray-700 leading-relaxed">
-                <p>
+            <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-blue-100">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="bg-blue-100 p-3 rounded-xl">
+                  <span className="text-3xl">📖</span>
+                </div>
+                <h2 className="text-2xl font-bold text-blue-900">About This Tool</h2>
+              </div>
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                <p className="text-lg">
                   This educational tool helps young women (ages 15-40) understand the relationship between Body Mass Index (BMI)
                   and reproductive health outcomes including fertility, pregnancy, and menstrual health.
                 </p>
-                <div className="bg-teal-50 border-l-4 border-teal-500 p-4 rounded">
-                  <h3 className="font-semibold text-teal-900 mb-2">🔬 Evidence-Based Information</h3>
-                  <p className="text-teal-800 text-sm">
+                <div className="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-lg">
+                  <h3 className="font-bold text-blue-900 mb-2 flex items-center gap-2">
+                    <span>🔬</span> Evidence-Based Information
+                  </h3>
+                  <p className="text-blue-800 text-sm">
                     All health information is based on WHO classifications and peer-reviewed medical research including
                     systematic reviews and meta-analyses published in 2023-2024.
                   </p>
                 </div>
-                <div className="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
-                  <h3 className="font-semibold text-purple-900 mb-2">💡 Personalized Health Education</h3>
-                  <p className="text-purple-800 text-sm">
+                <div className="bg-emerald-50 border-l-4 border-emerald-600 p-5 rounded-lg">
+                  <h3 className="font-bold text-emerald-900 mb-2 flex items-center gap-2">
+                    <span>💡</span> Personalized Health Education
+                  </h3>
+                  <p className="text-emerald-800 text-sm">
                     This tool provides personalized educational insights tailored to your BMI category and age,
                     making complex medical research accessible and easy to understand for better health decisions.
                   </p>
                 </div>
-                <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded">
-                  <h3 className="font-semibold text-amber-900 mb-2">⚕️ Educational Purpose</h3>
+                <div className="bg-amber-50 border-l-4 border-amber-600 p-5 rounded-lg">
+                  <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
+                    <span>⚕️</span> Educational Purpose
+                  </h3>
                   <p className="text-amber-800 text-sm">
                     This tool is designed for educational purposes only. It does not provide medical diagnosis or treatment
                     recommendations. Always consult qualified healthcare professionals for personalized medical advice.
@@ -184,28 +180,28 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8 mt-16">
+      <footer className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white py-10 mt-16 border-t-4 border-emerald-600">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6">
-            <p className="text-gray-300 mb-2 text-lg font-semibold">BMI & Reproductive Health Analyzer</p>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="text-slate-200 mb-2 text-xl font-bold">BMI & Reproductive Health Analyzer</p>
+            <p className="text-slate-300 text-sm mb-4">
               Evidence-based health education for young women
             </p>
-            <p className="text-gray-500 text-xs">
+            <p className="text-slate-400 text-xs">
               Medical data sources: WHO, PMC/PubMed Research, FIGO, ASRM | For educational use only
             </p>
           </div>
-          <div className="border-t border-gray-700 pt-6 text-center">
+          <div className="border-t border-slate-700 pt-6 text-center">
             <a
               href="https://instagram.com/programmerscourt"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 transition-colors font-medium"
+              className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-all transform hover:scale-105 font-semibold text-lg"
             >
-              <span className="text-xl">⚡</span>
+              <span className="text-2xl">⚡</span>
               <span>Powered by Programmers Court LTD</span>
             </a>
-            <p className="text-gray-500 text-xs mt-2">
+            <p className="text-slate-400 text-sm mt-3">
               Professional software development solutions
             </p>
           </div>

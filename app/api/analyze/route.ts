@@ -19,29 +19,46 @@ export async function POST(request: NextRequest) {
     });
 
     // Create educational prompt for GPT-5-nano
-    const prompt = `You are a medical education assistant providing evidence-based information about BMI and reproductive health for young African women.
+    const prompt = `You are a medical education specialist providing detailed, evidence-based health guidance about BMI and reproductive health for young women.
 
 Patient Profile:
 - Age: ${age} years
 - BMI: ${bmi}
 - Category: ${category}
 
-Reproductive Health Impacts:
+Reproductive Health Data:
 ${JSON.stringify(impacts, null, 2)}
 
-Key Statistics:
+Research Evidence:
 ${JSON.stringify(statistics, null, 2)}
 
-Please provide:
-1. A clear, compassionate explanation of what this BMI category means for reproductive health
-2. Specific insights about fertility and pregnancy considerations for this BMI range
-3. Evidence-based recommendations for maintaining or improving reproductive health
-4. Important note about African body composition variations and individual assessment needs
-5. Encouragement to consult healthcare providers for personalized guidance
+Provide a comprehensive, structured health analysis with these sections:
 
-Keep the tone educational, supportive, and empowering. Use simple language appropriate for ages 15-40. Focus on actionable insights and avoid fear-mongering.
+**1. BMI Overview** (2-3 sentences)
+Explain what this BMI category means and its general health implications in clear, compassionate terms.
 
-Limit response to 250-300 words.`;
+**2. Reproductive Health Impact** (4-5 sentences)
+Detail specific effects on:
+- Fertility and ovulation
+- Menstrual health and hormonal balance
+- Pregnancy outcomes and risks
+Use concrete examples and statistics where relevant.
+
+**3. Actionable Recommendations** (3-4 points)
+Provide specific, practical steps for:
+- Nutrition and dietary considerations
+- Physical activity guidance
+- Health monitoring suggestions
+- When to seek medical consultation
+
+**4. Important Considerations**
+- Note individual variations in body composition
+- Emphasize that BMI is one screening tool among many
+- Encourage professional medical consultation for personalized care
+
+Write in a warm, educational tone that empowers without alarming. Use evidence-based language appropriate for ages 15-40. Be specific and actionable.
+
+Limit response to 350-400 words for comprehensive coverage.`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-5-nano', // Using GPT-5-nano as specified
@@ -56,7 +73,7 @@ Limit response to 250-300 words.`;
         }
       ],
       temperature: 0.7,
-      max_tokens: 500,
+      max_tokens: 650,
     });
 
     const analysis = completion.choices[0]?.message?.content || 'Unable to generate analysis at this time.';
