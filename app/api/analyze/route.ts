@@ -61,7 +61,7 @@ Write in a warm, educational tone that empowers without alarming. Use evidence-b
 Limit response to 350-400 words for comprehensive coverage.`;
 
     const completion = await openai.chat.completions.create({
-      model: 'gpt-5-nano', // Using GPT-5-nano as specified
+      model: 'gpt-4o-mini', // Using gpt-4o-mini for better text generation (gpt-5-nano uses all tokens for reasoning)
       messages: [
         {
           role: 'system',
@@ -73,7 +73,7 @@ Limit response to 350-400 words for comprehensive coverage.`;
         }
       ],
       temperature: 0.7,
-      max_tokens: 650,
+      max_tokens: 650, // gpt-4o-mini uses max_tokens
     });
 
     const analysis = completion.choices[0]?.message?.content || 'Unable to generate analysis at this time.';

@@ -306,18 +306,6 @@ export function BMIInputFormEnhanced({ onCalculate, isLoading }: BMIInputFormPro
           )}
         </button>
       </div>
-
-      {/* Medical Disclaimer */}
-      <div className="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 text-sm shadow-md">
-        <p className="text-amber-900 flex items-start gap-2">
-          <span className="text-xl mt-0.5">⚕️</span>
-          <span>
-            <span className="font-semibold">Medical Disclaimer:</span> This tool is for educational purposes only and does not replace professional medical advice.
-            BMI is a screening tool and may not account for individual factors like muscle mass or body composition variations.
-            Please consult a healthcare provider for personalized health assessment.
-          </span>
-        </p>
-      </div>
     </form>
   );
 }

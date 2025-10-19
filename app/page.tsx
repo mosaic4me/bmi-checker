@@ -13,11 +13,15 @@ export default function Home() {
   const [bmiResult, setBmiResult] = useState<BMIResult | null>(null);
   const [currentInput, setCurrentInput] = useState<BMIInput | null>(null);
   const [aiAnalysis, setAiAnalysis] = useState<string>('');
+  const [showPreloader, setShowPreloader] = useState(false);
   const [isLoadingAI, setIsLoadingAI] = useState(false);
   const [aiError, setAiError] = useState<string>('');
   const [showResults, setShowResults] = useState(false);
 
   const handleCalculate = async (input: BMIInput) => {
+    // Show preloader
+    setShowPreloader(true);
+
     // Calculate BMI
     const result = calculateBMI(input);
     setBmiResult(result);
@@ -38,6 +42,9 @@ export default function Home() {
 
     // Get AI analysis
     await fetchAIAnalysis(input, result);
+
+    // Hide preloader
+    setShowPreloader(false);
 
     // Scroll to results
     setTimeout(() => {
@@ -93,7 +100,7 @@ export default function Home() {
   const healthData = bmiResult ? REPRODUCTIVE_HEALTH_DATA[bmiResult.category] : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 relative">
       {/* Header */}
       <header className="bg-gradient-to-r from-blue-900 via-blue-800 to-emerald-800 text-white shadow-xl border-b-4 border-emerald-600">
         <div className="container mx-auto px-4 py-10">
@@ -108,6 +115,22 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      {/* Preloader */}
+      {showPreloader && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center backdrop-blur-sm">
+          <div className="bg-white rounded-2xl p-8 shadow-2xl flex flex-col items-center gap-4">
+            <div className="relative">
+              <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-2xl">🏥</span>
+              </div>
+            </div>
+            <p className="text-lg font-semibold text-blue-900">Generating Health Analysis...</p>
+            <p className="text-sm text-slate-600">Please wait while we analyze your data</p>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
@@ -127,8 +150,8 @@ export default function Home() {
               {/* AI Insights */}
               <AIInsights analysis={aiAnalysis} isLoading={isLoadingAI} error={aiError} />
 
-              {/* Reproductive Health Impact */}
-              <ReproductiveHealthImpactPanel data={healthData} categoryColor={bmiResult.categoryColor} />
+              {/* Reproductive Health Impact - Commented out for now, may revert later */}
+              {/* <ReproductiveHealthImpactPanel data={healthData} categoryColor={bmiResult.categoryColor} /> */}
             </div>
           )}
 
@@ -179,31 +202,100 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white py-10 mt-16 border-t-4 border-emerald-600">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-6">
-            <p className="text-slate-200 mb-2 text-xl font-bold">BMI & Reproductive Health Analyzer</p>
-            <p className="text-slate-300 text-sm mb-4">
-              Evidence-based health education for young women
-            </p>
-            <p className="text-slate-400 text-xs">
-              Medical data sources: WHO, PMC/PubMed Research, FIGO, ASRM | For educational use only
+      {/* Medical Disclaimer at Bottom */}
+      <div className="container mx-auto px-4 pb-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-amber-50 border-2 border-amber-300 rounded-xl p-6 shadow-lg">
+            <p className="text-amber-900 flex items-start gap-3">
+              <span className="text-2xl mt-0.5">⚕️</span>
+              <span>
+                <span className="font-bold text-lg">Medical Disclaimer:</span>
+                <span className="block mt-2 text-sm leading-relaxed">
+                  This tool is for educational purposes only and does not replace professional medical advice.
+                  BMI is a screening tool and may not account for individual factors like muscle mass or body composition variations.
+                  Please consult a healthcare provider for personalized health assessment.
+                </span>
+              </span>
             </p>
           </div>
-          <div className="border-t border-slate-700 pt-6 text-center">
-            <a
-              href="https://instagram.com/programmerscourt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-all transform hover:scale-105 font-semibold text-lg"
-            >
-              <span className="text-2xl">⚡</span>
-              <span>Powered by Programmers Court LTD</span>
-            </a>
-            <p className="text-slate-400 text-sm mt-3">
-              Professional software development solutions
-            </p>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-emerald-950 text-white py-12 mt-8">
+        {/* Top Accent */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-emerald-500 to-blue-500"></div>
+
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            {/* About Section */}
+            <div>
+              <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+                <span className="text-2xl">🏥</span>
+                About This Tool
+              </h3>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                Evidence-based BMI and reproductive health education platform designed for young women ages 15-40.
+                Powered by WHO guidelines and peer-reviewed medical research.
+              </p>
+            </div>
+
+            {/* Medical Sources */}
+            <div>
+              <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+                <span className="text-2xl">📚</span>
+                Medical Sources
+              </h3>
+              <ul className="space-y-2 text-slate-300 text-sm">
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-400">✓</span> World Health Organization (WHO)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-400">✓</span> PMC/PubMed Research
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-400">✓</span> FIGO & ASRM Guidelines
+                </li>
+              </ul>
+            </div>
+
+            {/* Disclaimer */}
+            <div>
+              <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+                <span className="text-2xl">⚕️</span>
+                Disclaimer
+              </h3>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                For educational purposes only. Not medical advice. Consult qualified healthcare professionals for personalized health guidance.
+              </p>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-slate-700 pt-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              {/* Branding */}
+              <div className="text-center md:text-left">
+                <a
+                  href="https://instagram.com/programmerscourt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-500 hover:to-blue-500 px-6 py-3 rounded-xl transition-all transform hover:scale-105 shadow-lg font-bold text-lg group"
+                >
+                  <span className="text-2xl group-hover:rotate-12 transition-transform">⚡</span>
+                  <span>Powered by Programmers Court LTD</span>
+                </a>
+                <p className="text-slate-400 text-sm mt-3">
+                  Professional Software Development Solutions
+                </p>
+              </div>
+
+              {/* Copyright */}
+              <div className="text-center md:text-right text-slate-400 text-sm">
+                <p>© 2025 BMI Health Analyzer</p>
+                <p className="mt-1">All medical data from verified sources</p>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

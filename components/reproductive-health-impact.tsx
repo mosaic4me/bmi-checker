@@ -63,56 +63,54 @@ export function ReproductiveHealthImpactPanel({ data, categoryColor }: Reproduct
         ))}
       </div>
 
-      {/* Statistical Evidence */}
-      <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 mb-6">
-        <h4 className="font-bold text-blue-900 mb-3 flex items-center gap-2">
-          <span>📊</span> Key Statistical Evidence
-        </h4>
-        <div className="space-y-3">
-          {data.statistics.map((stat, index) => (
-            <div key={index} className="bg-white rounded-lg p-3 border border-blue-100">
-              <div className="font-semibold text-blue-800 mb-1">{stat.finding}</div>
-              <div className="text-gray-700 text-sm mb-2">{stat.value}</div>
-              <div className="text-xs text-gray-500 italic">Source: {stat.source}</div>
+      {/* Collapsible Evidence Section */}
+      <details className="group bg-blue-50 border-2 border-blue-200 rounded-xl overflow-hidden">
+        <summary className="cursor-pointer p-4 hover:bg-blue-100 transition-colors flex items-center justify-between font-bold text-blue-900">
+          <span className="flex items-center gap-2">
+            <span>📊</span> View Research Evidence & WHO Guidelines
+          </span>
+          <span className="group-open:rotate-180 transition-transform text-2xl">▼</span>
+        </summary>
+
+        <div className="p-4 space-y-4 border-t-2 border-blue-200">
+          {/* Statistical Evidence */}
+          <div>
+            <h5 className="font-semibold text-blue-900 mb-3">Key Statistical Findings</h5>
+            <div className="space-y-2">
+              {data.statistics.map((stat, index) => (
+                <div key={index} className="bg-white rounded-lg p-3 border border-blue-100">
+                  <div className="font-semibold text-blue-800 text-sm mb-1">{stat.finding}</div>
+                  <div className="text-gray-700 text-xs mb-1">{stat.value}</div>
+                  <div className="text-xs text-gray-500 italic">Source: {stat.source}</div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
 
-      {/* WHO Evidence Section */}
-      <div
-        className="rounded-lg p-5 border-2"
-        style={{
-          backgroundColor: `${categoryColor}10`,
-          borderColor: `${categoryColor}40`,
-        }}
-      >
-        <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2 text-lg">
-          <span>🏛️</span> WHO Evidence & Key Points
-        </h4>
+          {/* WHO Evidence */}
+          <div className="bg-white bg-opacity-80 rounded-lg p-4">
+            <h5 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+              <span>🏛️</span> WHO Evidence Summary
+            </h5>
+            <p className="text-gray-800 text-sm leading-relaxed mb-3">{data.whoEvidence.summary}</p>
 
-        <div className="bg-white bg-opacity-80 rounded-lg p-4 mb-4">
-          <p className="text-gray-800 leading-relaxed">{data.whoEvidence.summary}</p>
-        </div>
-
-        <div className="space-y-2">
-          <div className="font-semibold text-gray-800 mb-2">Critical Insights:</div>
-          {data.whoEvidence.keyPoints.map((point, index) => (
-            <div key={index} className="flex items-start gap-2 bg-white bg-opacity-60 rounded-lg p-3">
-              <span className="text-lg" style={{ color: categoryColor }}>
-                ✓
-              </span>
-              <span className="text-gray-700 text-sm leading-relaxed">{point}</span>
+            <div className="space-y-1">
+              {data.whoEvidence.keyPoints.slice(0, 3).map((point, index) => (
+                <div key={index} className="flex items-start gap-2 text-xs">
+                  <span className="text-sm" style={{ color: categoryColor }}>✓</span>
+                  <span className="text-gray-700">{point}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="mt-4 pt-4 border-t-2 border-gray-200">
-          <div className="text-xs text-gray-600">
-            <span className="font-semibold">Citation:</span> {data.whoEvidence.citation}
+            <div className="mt-3 pt-3 border-t border-gray-200">
+              <div className="text-xs text-gray-600">
+                <span className="font-semibold">Citations:</span> {data.whoEvidence.citation}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </details>
     </div>
   );
 }
