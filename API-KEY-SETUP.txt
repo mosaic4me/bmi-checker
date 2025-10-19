@@ -1,0 +1,160 @@
+═══════════════════════════════════════════════════════════════
+    BMI & REPRODUCTIVE HEALTH ANALYZER - API KEY SETUP
+═══════════════════════════════════════════════════════════════
+
+IMPORTANT: You need to add your OpenAI API key before using the app!
+
+────────────────────────────────────────────────────────────────
+STEP 1: Get Your OpenAI API Key
+────────────────────────────────────────────────────────────────
+
+1. Go to: https://platform.openai.com/api-keys
+2. Sign in or create an account
+3. Click "Create new secret key"
+4. Name it: "BMI Checker Project"
+5. Copy the key (starts with sk-proj-...)
+   IMPORTANT: Save this key immediately - you can't see it again!
+
+────────────────────────────────────────────────────────────────
+STEP 2: Create .env.local File
+────────────────────────────────────────────────────────────────
+
+In your project folder (bmi-reproductive-health/), create a file
+named ".env.local" with this content:
+
+OPENAI_API_KEY=sk-proj-paste-your-actual-key-here
+
+Replace "sk-proj-paste-your-actual-key-here" with your real key!
+
+────────────────────────────────────────────────────────────────
+WINDOWS USERS: Creating .env.local
+────────────────────────────────────────────────────────────────
+
+Option 1 - Command Prompt:
+  1. Open Command Prompt in project folder
+  2. Run: copy .env.local.example .env.local
+  3. Edit .env.local in Notepad and add your key
+
+Option 2 - File Explorer:
+  1. Open project folder in File Explorer
+  2. Right-click → New → Text Document
+  3. Name it: .env.local (remove .txt extension)
+  4. Edit and add: OPENAI_API_KEY=your-key-here
+
+────────────────────────────────────────────────────────────────
+MAC/LINUX USERS: Creating .env.local
+────────────────────────────────────────────────────────────────
+
+1. Open Terminal in project folder
+2. Run: cp .env.local.example .env.local
+3. Edit: nano .env.local
+4. Add your key, save (Ctrl+X, Y, Enter)
+
+────────────────────────────────────────────────────────────────
+STEP 3: Verify Setup
+────────────────────────────────────────────────────────────────
+
+1. Check file exists:
+   - Windows: dir .env.local
+   - Mac/Linux: ls .env.local
+
+2. Verify contents:
+   - Windows: type .env.local
+   - Mac/Linux: cat .env.local
+
+   Should show: OPENAI_API_KEY=sk-proj-...
+
+────────────────────────────────────────────────────────────────
+STEP 4: Test the Application
+────────────────────────────────────────────────────────────────
+
+1. Install dependencies (first time only):
+   npm install
+
+2. Run the application:
+   npm run dev
+
+3. Open browser: http://localhost:3000
+
+4. Test BMI calculation:
+   - Age: 25
+   - Height: 165
+   - Weight: 60
+   - Click "Calculate BMI & Analyze"
+
+5. Verify AI analysis appears (proves API key works!)
+
+────────────────────────────────────────────────────────────────
+DEPLOYING TO VERCEL
+────────────────────────────────────────────────────────────────
+
+When you deploy to Vercel, you need to add your API key there too:
+
+1. Go to Vercel Dashboard → Your Project → Settings
+2. Click "Environment Variables"
+3. Add:
+   Name: OPENAI_API_KEY
+   Value: your-actual-key-here
+4. Select: Production, Preview, Development
+5. Click "Add"
+6. Redeploy your project
+
+────────────────────────────────────────────────────────────────
+TROUBLESHOOTING
+────────────────────────────────────────────────────────────────
+
+Problem: "OpenAI API key not configured" error
+
+Solutions:
+  ✓ Check .env.local exists in project root folder
+  ✓ Verify file content: OPENAI_API_KEY=sk-proj-...
+  ✓ Restart development server (npm run dev)
+  ✓ Check for typos in key
+  ✓ Ensure no spaces around = sign
+
+Problem: "Invalid API key" error
+
+Solutions:
+  ✓ Verify key is correct (copy again from OpenAI)
+  ✓ Check key hasn't expired
+  ✓ Ensure OpenAI account has credits
+
+────────────────────────────────────────────────────────────────
+SECURITY BEST PRACTICES
+────────────────────────────────────────────────────────────────
+
+✓ NEVER commit .env.local to GitHub
+✓ NEVER share your API key publicly
+✓ Set usage limits in OpenAI dashboard
+✓ Rotate key if accidentally exposed
+✓ Use environment variables in production
+
+────────────────────────────────────────────────────────────────
+COST ESTIMATE (GPT-5-nano)
+────────────────────────────────────────────────────────────────
+
+Input tokens:  $0.05 per 1 million
+Output tokens: $0.40 per 1 million
+
+Per calculation: ~$0.00004 (0.004 cents!)
+100 calculations: ~$0.004 (less than 1 cent!)
+1000 calculations: ~$0.48 per month
+
+Very budget-friendly for school projects! 💰
+
+────────────────────────────────────────────────────────────────
+NEED HELP?
+────────────────────────────────────────────────────────────────
+
+Check these guides:
+  - QUICK-START.md (5-minute setup)
+  - README.md (full documentation)
+  - DEPLOYMENT-GUIDE.md (Vercel deployment)
+
+Or visit:
+  - OpenAI Help: platform.openai.com/docs
+  - Next.js Docs: nextjs.org/docs
+
+═══════════════════════════════════════════════════════════════
+           Ready to start! Add your key and run npm run dev
+═══════════════════════════════════════════════════════════════
