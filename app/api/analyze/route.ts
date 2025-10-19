@@ -3,7 +3,7 @@ import OpenAI from 'openai';
 
 export async function POST(request: NextRequest) {
   try {
-    const { bmi, category, age, impacts, statistics } = await request.json();
+    const { bmi, category, age } = await request.json();
 
     // Validate API key
     const apiKey = process.env.OPENAI_API_KEY;

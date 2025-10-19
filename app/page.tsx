@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { BMIInputFormEnhanced } from '@/components/bmi-input-form-enhanced';
 import { BMIGauge } from '@/components/bmi-gauge';
-import { ReproductiveHealthImpactPanel } from '@/components/reproductive-health-impact';
+// import { ReproductiveHealthImpactPanel } from '@/components/reproductive-health-impact';
 import { AIInsights } from '@/components/ai-insights';
 import { CalculationHistory, saveToHistory, type HistoryEntry } from '@/components/calculation-history';
 import { calculateBMI, type BMIInput, type BMIResult } from '@/lib/bmi-calculator';

@@ -31,7 +31,7 @@ export function BMIInputFormEnhanced({ onCalculate, isLoading }: BMIInputFormPro
     const newErrors: Record<string, string> = {};
 
     const ageNum = parseFloat(age);
-    let weightNum = parseFloat(weight);
+    const weightNum = parseFloat(weight);
     let heightNum: number;
 
     // Validate age
@@ -77,7 +77,6 @@ export function BMIInputFormEnhanced({ onCalculate, isLoading }: BMIInputFormPro
       } else {
         const heightInCm = convertToCm(heightNum, heightUnit);
         if (heightInCm < 100 || heightInCm > 250) {
-          const unit = heightUnit === 'cm' ? 'cm' : 'm';
           newErrors.height = heightUnit === 'cm'
             ? 'Height must be between 100 and 250 cm'
             : 'Height must be between 1.0 and 2.5 m';
@@ -115,14 +114,14 @@ export function BMIInputFormEnhanced({ onCalculate, isLoading }: BMIInputFormPro
     }
   };
 
-  const UnitToggle = ({
+  const UnitToggle = <T extends string>({
     options,
     value,
     onChange
   }: {
-    options: readonly string[];
-    value: string;
-    onChange: (val: any) => void
+    options: readonly T[];
+    value: T;
+    onChange: (val: T) => void
   }) => (
     <div className="flex bg-slate-100 rounded-lg p-1 border border-slate-300">
       {options.map((option) => (
