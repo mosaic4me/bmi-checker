@@ -18,54 +18,38 @@ export async function POST(request: NextRequest) {
       apiKey: apiKey,
     });
 
-    // Create educational prompt for GPT-5-nano
-    const prompt = `You are a medical education specialist providing detailed, evidence-based health guidance about BMI and reproductive health for young women.
+    // Create educational prompt
+    const prompt = `You are a medical education specialist providing concise, evidence-based health guidance about BMI and reproductive health.
 
 Patient Profile:
 - Age: ${age} years
 - BMI: ${bmi}
 - Category: ${category}
 
-Reproductive Health Data:
-${JSON.stringify(impacts, null, 2)}
+Provide a concise, structured health analysis with these sections:
 
-Research Evidence:
-${JSON.stringify(statistics, null, 2)}
+**1. BMI Overview**
+In 1-2 sentences, explain what this BMI category means for overall health.
 
-Provide a comprehensive, structured health analysis with these sections:
+**2. Reproductive Health Impact**
+In 2-3 sentences, describe key effects on fertility, menstrual health, and pregnancy outcomes.
 
-**1. BMI Overview** (2-3 sentences)
-Explain what this BMI category means and its general health implications in clear, compassionate terms.
-
-**2. Reproductive Health Impact** (4-5 sentences)
-Detail specific effects on:
-- Fertility and ovulation
-- Menstrual health and hormonal balance
-- Pregnancy outcomes and risks
-Use concrete examples and statistics where relevant.
-
-**3. Actionable Recommendations** (3-4 points)
-Provide specific, practical steps for:
-- Nutrition and dietary considerations
+**3. Recommendations**
+Provide 3 specific, actionable points:
+- Nutrition focus
 - Physical activity guidance
-- Health monitoring suggestions
 - When to seek medical consultation
 
-**4. Important Considerations**
-- Note individual variations in body composition
-- Emphasize that BMI is one screening tool among many
-- Encourage professional medical consultation for personalized care
+Write in a warm, professional tone. Be direct and actionable. Use bold text for key health terms (e.g., **fertility**, **menstrual cycle**, **pregnancy**).
 
-Write in a warm, educational tone that empowers without alarming. Use evidence-based language appropriate for ages 15-40. Be specific and actionable.
-
-Limit response to 350-400 words for comprehensive coverage.`;
+Limit response to 200-250 words for clarity and impact.`;
 
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini', // Using gpt-4o-mini for better text generation (gpt-5-nano uses all tokens for reasoning)
+      model: 'gpt-4o-mini', // Using gpt-4o-mini for better text generation
       messages: [
         {
           role: 'system',
-          content: 'You are a medical education assistant specializing in reproductive health for young women in African populations. Provide evidence-based, compassionate, and culturally sensitive health education.'
+          content: 'You are a medical education assistant specializing in reproductive health. Provide evidence-based, compassionate health education with bold formatting for key medical terms.'
         },
         {
           role: 'user',
@@ -73,7 +57,7 @@ Limit response to 350-400 words for comprehensive coverage.`;
         }
       ],
       temperature: 0.7,
-      max_tokens: 650, // gpt-4o-mini uses max_tokens
+      max_tokens: 400, // Reduced for more concise responses
     });
 
     const analysis = completion.choices[0]?.message?.content || 'Unable to generate analysis at this time.';

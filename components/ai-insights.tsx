@@ -60,13 +60,17 @@ export function AIInsights({ analysis, isLoading, error }: AIInsightsProps) {
       </div>
 
       <div className="bg-white bg-opacity-80 rounded-lg p-5 leading-relaxed">
-        <div className="prose prose-sm max-w-none text-gray-800">
-          {analysis.split('\n\n').map((paragraph, index) => (
-            <p key={index} className="mb-3 last:mb-0">
-              {paragraph}
-            </p>
-          ))}
-        </div>
+        <div
+          className="prose prose-sm max-w-none text-gray-800"
+          style={{ fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }}
+          dangerouslySetInnerHTML={{
+            __html: analysis
+              .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold text-gray-900">$1</strong>')
+              .replace(/\n\n/g, '</p><p class="mb-3">')
+              .replace(/^(.*)$/, '<p class="mb-3">$1</p>')
+              .replace(/- /g, '<br/>• ')
+          }}
+        />
       </div>
 
       <div className="mt-4 flex items-center gap-2 text-xs text-purple-700 bg-purple-100 rounded-lg p-3">

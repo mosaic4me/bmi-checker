@@ -202,27 +202,8 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Medical Disclaimer at Bottom */}
-      <div className="container mx-auto px-4 pb-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-amber-50 border-2 border-amber-300 rounded-xl p-6 shadow-lg">
-            <p className="text-amber-900 flex items-start gap-3">
-              <span className="text-2xl mt-0.5">⚕️</span>
-              <span>
-                <span className="font-bold text-lg">Medical Disclaimer:</span>
-                <span className="block mt-2 text-sm leading-relaxed">
-                  This tool is for educational purposes only and does not replace professional medical advice.
-                  BMI is a screening tool and may not account for individual factors like muscle mass or body composition variations.
-                  Please consult a healthcare provider for personalized health assessment.
-                </span>
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Footer */}
-      <footer className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-emerald-950 text-white py-12 mt-8">
+      <footer className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-emerald-950 text-white py-12 mt-20">
         {/* Top Accent */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-emerald-500 to-blue-500"></div>
 
