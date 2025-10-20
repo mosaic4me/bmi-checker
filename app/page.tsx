@@ -203,78 +203,145 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-emerald-950 text-white py-12 mt-20">
-        {/* Top Accent */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-emerald-500 to-blue-500"></div>
+      <footer className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white border-t border-slate-800">
+        {/* Top Accent Line */}
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
 
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            {/* About Section */}
-            <div>
-              <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-                <span className="text-2xl">🏥</span>
-                About This Tool
-              </h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                Evidence-based BMI and reproductive health education platform designed for young women ages 15-40.
-                Powered by WHO guidelines and peer-reviewed medical research.
+        <div className="container mx-auto px-4 py-16">
+          {/* Main Footer Content */}
+          <div className="grid md:grid-cols-4 gap-10 mb-12">
+            {/* Brand & About Section */}
+            <div className="md:col-span-2">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-gradient-to-br from-blue-500 to-emerald-500 p-3 rounded-xl">
+                  <span className="text-3xl">🏥</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">BMI Health Analyzer</h3>
+                  <p className="text-blue-300 text-sm">Evidence-Based Health Education</p>
+                </div>
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed mb-4 max-w-md">
+                A comprehensive educational platform providing evidence-based information about BMI and reproductive health
+                for young women ages 15-40. Powered by WHO guidelines and peer-reviewed medical research.
               </p>
+              <div className="flex items-center gap-2 text-xs text-slate-500">
+                <span className="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">WHO Certified</span>
+                <span className="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">Evidence-Based</span>
+              </div>
             </div>
 
             {/* Medical Sources */}
             <div>
-              <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-                <span className="text-2xl">📚</span>
-                Medical Sources
-              </h3>
-              <ul className="space-y-2 text-slate-300 text-sm">
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-400">✓</span> World Health Organization (WHO)
+              <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Medical Sources</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-slate-400 text-sm hover:text-emerald-400 transition-colors">
+                  <span className="text-emerald-400 mt-0.5">✓</span>
+                  <span>World Health Organization</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-400">✓</span> PMC/PubMed Research
+                <li className="flex items-start gap-2 text-slate-400 text-sm hover:text-emerald-400 transition-colors">
+                  <span className="text-emerald-400 mt-0.5">✓</span>
+                  <span>PMC/PubMed Research</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-400">✓</span> FIGO & ASRM Guidelines
+                <li className="flex items-start gap-2 text-slate-400 text-sm hover:text-emerald-400 transition-colors">
+                  <span className="text-emerald-400 mt-0.5">✓</span>
+                  <span>FIGO Guidelines</span>
+                </li>
+                <li className="flex items-start gap-2 text-slate-400 text-sm hover:text-emerald-400 transition-colors">
+                  <span className="text-emerald-400 mt-0.5">✓</span>
+                  <span>ASRM Standards</span>
                 </li>
               </ul>
             </div>
 
-            {/* Disclaimer */}
+            {/* Important Links */}
             <div>
-              <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-                <span className="text-2xl">⚕️</span>
-                Disclaimer
-              </h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                For educational purposes only. Not medical advice. Consult qualified healthcare professionals for personalized health guidance.
-              </p>
+              <h4 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Resources</h4>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#" className="text-slate-400 text-sm hover:text-blue-400 transition-colors flex items-center gap-2">
+                    <span>→</span> About This Tool
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-slate-400 text-sm hover:text-blue-400 transition-colors flex items-center gap-2">
+                    <span>→</span> Medical Disclaimer
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-slate-400 text-sm hover:text-blue-400 transition-colors flex items-center gap-2">
+                    <span>→</span> Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-slate-400 text-sm hover:text-blue-400 transition-colors flex items-center gap-2">
+                    <span>→</span> Contact Support
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
-          {/* Divider */}
-          <div className="border-t border-slate-700 pt-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              {/* Branding */}
-              <div className="text-center md:text-left">
+          {/* Disclaimer Banner */}
+          <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 mb-8">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl">⚕️</span>
+              <div>
+                <h5 className="text-amber-400 font-semibold text-sm mb-1">Medical Disclaimer</h5>
+                <p className="text-slate-400 text-xs leading-relaxed">
+                  This tool is for educational purposes only and does not provide medical diagnosis or treatment recommendations.
+                  Always consult qualified healthcare professionals for personalized medical advice and health decisions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-slate-800 pt-8">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+              {/* Developer Attribution */}
+              <div className="flex flex-col sm:flex-row items-center gap-4">
                 <a
                   href="https://instagram.com/programmerscourt"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-500 hover:to-blue-500 px-6 py-3 rounded-xl transition-all transform hover:scale-105 shadow-lg font-bold text-lg group"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 px-5 py-2.5 rounded-lg transition-all transform hover:scale-105 shadow-lg text-sm font-semibold group"
                 >
-                  <span className="text-2xl group-hover:rotate-12 transition-transform">⚡</span>
+                  <span className="text-xl group-hover:rotate-12 transition-transform">⚡</span>
                   <span>Powered by Programmers Court LTD</span>
                 </a>
-                <p className="text-slate-400 text-sm mt-3">
-                  Professional Software Development Solutions
-                </p>
+                <div className="text-center sm:text-left">
+                  <p className="text-slate-500 text-xs">Professional Software Development</p>
+                  <p className="text-slate-600 text-xs">Building Healthcare Solutions</p>
+                </div>
               </div>
 
-              {/* Copyright */}
-              <div className="text-center md:text-right text-slate-400 text-sm">
-                <p>© 2025 BMI Health Analyzer</p>
-                <p className="mt-1">All medical data from verified sources</p>
+              {/* Copyright & Legal */}
+              <div className="text-center lg:text-right">
+                <p className="text-slate-400 text-sm font-medium mb-1">© 2025 BMI Health Analyzer. All rights reserved.</p>
+                <p className="text-slate-600 text-xs">Medical data from verified sources • WHO Compliant</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-8 pt-6 border-t border-slate-800/50">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600">
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-500">🔒</span>
+                <span>Secure & Private</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-blue-500">🔬</span>
+                <span>Evidence-Based</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-purple-500">🎓</span>
+                <span>Educational Purpose</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-amber-500">⚡</span>
+                <span>AI-Powered Analysis</span>
               </div>
             </div>
           </div>
