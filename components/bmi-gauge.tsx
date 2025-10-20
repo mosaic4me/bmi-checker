@@ -81,14 +81,6 @@ export function BMIGauge({ result }: BMIGaugeProps) {
           <div className="text-gray-600">≥ 30</div>
         </div>
       </div>
-
-      {/* African Context Note */}
-      <div className="mt-6 bg-purple-50 border border-purple-200 rounded-lg p-3 text-sm">
-        <p className="text-purple-900">
-          <span className="font-semibold">🌍 African Context:</span> WHO standard BMI classifications apply.
-          However, body composition may vary across populations. Individual clinical assessment is recommended for personalized health guidance.
-        </p>
-      </div>
     </div>
   );
 }
