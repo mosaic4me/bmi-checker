@@ -100,9 +100,9 @@ export default function Home() {
   const healthData = bmiResult ? REPRODUCTIVE_HEALTH_DATA[bmiResult.category] : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 relative">
+    <div className="min-h-screen bg-slate-50 relative">
       {/* Header */}
-      <header className="bg-gradient-to-r from-blue-900 via-blue-800 to-emerald-800 text-white shadow-xl border-b-4 border-emerald-600">
+      <header className="bg-blue-900 text-white shadow-xl border-b-4 border-blue-700">
         <div className="container mx-auto px-4 py-10">
           <div className="flex items-center gap-4">
             <div className="bg-white bg-opacity-10 p-4 rounded-2xl backdrop-blur-sm">
@@ -203,9 +203,9 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white border-t border-slate-800">
+      <footer className="relative bg-slate-900 text-white border-t border-slate-800">
         {/* Top Accent Line */}
-        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-blue-600"></div>
 
         <div className="container mx-auto px-4 py-16">
           {/* Main Footer Content */}
@@ -213,7 +213,7 @@ export default function Home() {
             {/* Brand & About Section */}
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-gradient-to-br from-blue-500 to-emerald-500 p-3 rounded-xl">
+                <div className="bg-blue-600 p-3 rounded-xl">
                   <span className="text-3xl">🏥</span>
                 </div>
                 <div>
@@ -226,8 +226,8 @@ export default function Home() {
                 for young women ages 15-40. Powered by WHO guidelines and peer-reviewed medical research.
               </p>
               <div className="flex items-center gap-2 text-xs text-slate-500">
-                <span className="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">WHO Certified</span>
-                <span className="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">Evidence-Based</span>
+                <span className="bg-emerald-900 text-emerald-300 px-3 py-1 rounded-full border border-emerald-700">WHO Certified</span>
+                <span className="bg-blue-900 text-blue-300 px-3 py-1 rounded-full border border-blue-700">Evidence-Based</span>
               </div>
             </div>
 
@@ -283,11 +283,11 @@ export default function Home() {
           </div>
 
           {/* Disclaimer Banner */}
-          <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 mb-8">
+          <div className="bg-amber-900 border border-amber-700 rounded-xl p-4 mb-8">
             <div className="flex items-start gap-3">
               <span className="text-2xl">⚕️</span>
               <div>
-                <h5 className="text-amber-400 font-semibold text-sm mb-1">Medical Disclaimer</h5>
+                <h5 className="text-amber-300 font-semibold text-sm mb-1">Medical Disclaimer</h5>
                 <p className="text-slate-400 text-xs leading-relaxed">
                   This tool is for educational purposes only and does not provide medical diagnosis or treatment recommendations.
                   Always consult qualified healthcare professionals for personalized medical advice and health decisions.
@@ -305,7 +305,7 @@ export default function Home() {
                   href="https://instagram.com/programmerscourt"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 px-5 py-2.5 rounded-lg transition-all transform hover:scale-105 shadow-lg text-sm font-semibold group"
+                  className="inline-flex items-center gap-3 bg-blue-700 hover:bg-blue-600 px-5 py-2.5 rounded-lg transition-all transform hover:scale-105 shadow-lg text-sm font-semibold group"
                 >
                   <span className="text-xl group-hover:rotate-12 transition-transform">⚡</span>
                   <span>Powered by Programmers Court LTD</span>
