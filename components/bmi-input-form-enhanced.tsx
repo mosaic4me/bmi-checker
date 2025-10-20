@@ -161,7 +161,7 @@ export function BMIInputFormEnhanced({ onCalculate, isLoading }: BMIInputFormPro
             id="age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
-            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-lg ${
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-lg text-slate-900 font-medium ${
               errors.age
                 ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                 : 'border-slate-200 focus:border-blue-500 focus:ring-blue-200'
@@ -195,7 +195,7 @@ export function BMIInputFormEnhanced({ onCalculate, isLoading }: BMIInputFormPro
             id="weight"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
-            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-lg ${
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-lg text-slate-900 font-medium ${
               errors.weight
                 ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                 : 'border-slate-200 focus:border-blue-500 focus:ring-blue-200'
@@ -231,7 +231,7 @@ export function BMIInputFormEnhanced({ onCalculate, isLoading }: BMIInputFormPro
                   id="feet"
                   value={feet}
                   onChange={(e) => setFeet(e.target.value)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-lg ${
+                  className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-lg text-slate-900 font-medium ${
                     errors.height
                       ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                       : 'border-slate-200 focus:border-blue-500 focus:ring-blue-200'
@@ -248,7 +248,7 @@ export function BMIInputFormEnhanced({ onCalculate, isLoading }: BMIInputFormPro
                   id="inches"
                   value={inches}
                   onChange={(e) => setInches(e.target.value)}
-                  className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-lg ${
+                  className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-lg text-slate-900 font-medium ${
                     errors.height
                       ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                       : 'border-slate-200 focus:border-blue-500 focus:ring-blue-200'
@@ -266,7 +266,7 @@ export function BMIInputFormEnhanced({ onCalculate, isLoading }: BMIInputFormPro
               id="height"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
-              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-lg ${
+              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-2 transition-all text-lg text-slate-900 font-medium ${
                 errors.height
                   ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                   : 'border-slate-200 focus:border-blue-500 focus:ring-blue-200'
